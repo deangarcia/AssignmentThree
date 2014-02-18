@@ -2,7 +2,7 @@
  * CECS 277 Spring 2014 Assignment 2
  * @author murgolo
  */
-package cecs277;
+package assignmentThree;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;

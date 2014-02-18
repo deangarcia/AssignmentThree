@@ -3,6 +3,7 @@
 * @author Dean Garcia 3996
 * @author Michael Valenzuela 5522
 **/
+package assignmentThree;
 import java.text.DecimalFormat;
 
 import java.text.SimpleDateFormat;
