@@ -1,0 +1,23 @@
+Same as Asignment two with the addition of:
+
+  (1)
+
+   If a Bank tries to add a duplicate account a DuplicateAccountException must be throw.
+
+   A dupicate account means the same name, same birthdate and same type.
+
+   i.e., it is OK for the same person to have a Savings and Checking account but NOT
+
+   more than 1 Savings or 1 Checking account.
+
+   (2)
+
+    If a transaction will cause an account to have a negative balance an
+
+   OverdrawnAccountException must be thrown.
+
+Look at my main() and the desired output carefully.  You need to deduce the methods
+
+in the exception classes by looking at my main() and output.
+
+Remember, except for white space, your output must match mine to get full credit.
