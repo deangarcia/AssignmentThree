@@ -1,0 +1,68 @@
+
+===================================================================
+Overdrawn Account: Owner: John Smith 01-02-1980, Type: Checking, Balance: 25.0, Withdrawal: 40.0, Short: -15.0
+====================================================================
+
+
+===================================================================
+Duplicate Account: Owner: Mary Jones 01-02-1975, Type: Savings
+====================================================================
+
+
+===================================================================
+Overdrawn Account: Owner: Mary Jones 01-02-1975, Type: Checking, Balance: 700.0, Withdrawal: 800.0, Short: -100.0
+====================================================================
+
+Sorted
+Bank Name: Greater Bank of Long Beach
+Manager: George Boole 10-15-1978
+Accounts
+Checking Account. Owner: John Smith 01-02-1980, Balance: 25.00
+02-03-1981 Deposit 50.00
+02-05-1981 Fee 25.00
+
+Checking Account. Owner: Sally Smith 12-25-1975, Balance: 165.00
+03-01-1981 Deposit 200.00
+04-10-1981 Withdrawal 25.00
+02-20-1982 Fee 10.00
+
+Savings Account. Owner: Mary Jones 01-02-1975, Balance: 485.00
+02-05-1981 Deposit 500.00
+02-10-1981 Withdrawal 25.00
+02-20-1981 Interest 10.00
+
+Savings Account. Owner: MaryAnn Jones 01-12-1975, Balance: 540.00
+02-05-2002 Deposit 540.00
+
+Checking Account. Owner: Mary Jones 01-02-1975, Balance: 700.00
+02-05-1985 Deposit 700.00
+
+
+Unsorted
+Bank Name: Greater Bank of Long Beach
+Manager: George Boole 10-15-1978
+Accounts
+Savings Account. Owner: Mary Jones 01-02-1975, Balance: 485.00
+02-05-1981 Deposit 500.00
+02-10-1981 Withdrawal 25.00
+02-20-1981 Interest 10.00
+
+Checking Account. Owner: Sally Smith 12-25-1975, Balance: 165.00
+03-01-1981 Deposit 200.00
+04-10-1981 Withdrawal 25.00
+02-20-1982 Fee 10.00
+
+Checking Account. Owner: John Smith 01-02-1980, Balance: 25.00
+02-03-1981 Deposit 50.00
+02-05-1981 Fee 25.00
+
+Savings Account. Owner: MaryAnn Jones 01-12-1975, Balance: 540.00
+02-05-2002 Deposit 540.00
+
+Checking Account. Owner: Mary Jones 01-02-1975, Balance: 700.00
+02-05-1985 Deposit 700.00
+
+
+
+Number of overdrawn account attempts: 2
+Number of duplicate account attempts: 1
