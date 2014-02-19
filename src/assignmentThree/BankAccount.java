@@ -1,9 +1,10 @@
 /**
-* CECS 277 Spring 2014 Assignment 2
-* @author Dean Garcia 3996
-* @author Michael Valenzuela 5522
-**/
+ * CECS 277 Spring 2014 Assignment 2
+ * @author Dean Garcia 3996
+ * @author Michael Valenzuela 5522
+ **/
 package assignmentThree;
+
 import java.text.DecimalFormat;
 
 import java.text.SimpleDateFormat;
@@ -13,180 +14,219 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import java.lang.Comparable;
+
 /**
  * 
- * This creates a bankaccount for a person and tracks transactions, withdrawl, and deposit
- *
+ * This creates a bankaccount for a person and tracks transactions, withdrawl,
+ * and deposit
+ * 
  */
 public abstract class BankAccount implements Comparable<BankAccount>
 
 {
-/**
- * gets information of person and records transaction date
- * @param owner information of person and bankaccount
- */
-public BankAccount(Person owner)
+	/**
+	 * gets information of person and records transaction date
+	 * 
+	 * @param owner
+	 *            information of person and bankaccount
+	 */
+	public BankAccount(Person owner)
 
-{
+	{
 
-_owner = owner;
+		_owner = owner;
 
-_transactions = new ArrayList<Transaction>();
+		_transactions = new ArrayList<Transaction>();
 
-Transaction trans = new Transaction();
+		Transaction trans = new Transaction();
 
-_transactions.add(trans);
+		_transactions.add(trans);
 
-}
-/**
- * records transaction as a withdrawl
- * @param tDate the date as a calendar date
- * @param amount the withdrawl amount as a double
- */
-public void makeWithdrawal(Calendar tDate, double amount)
+	}
 
-{
+	/**
+	 * records transaction as a withdrawl
+	 * 
+	 * @param tDate
+	 *            the date as a calendar date
+	 * @param amount
+	 *            the withdrawl amount as a double
+	 */
+	public void makeWithdrawal(Calendar tDate, double amount) throws OverdrawnAccountException
+	{
+		String error = "Overdrawn Account: ";
+		SimpleDateFormat dob = new SimpleDateFormat("MM-dd-yyyy");
+		if(_transactions.get(0).getBalance() > amount) 
+		{
+			double difference = _transactions.get(0).getBalance() - amount;
+			error += getOwner().getFirstName() + " " + getOwner().getLastName() + " " + 
+					dob.format(getOwner().getbirthDate().getTime()) + ", " + "Type: " + 
+					_transactions.get(0).getAccountType() + ", " + "Balance: " + _transactions.get(0).getBalance()
+					+ ", " + "Withdrawl: " + new DecimalFormat("#.00").format(amount) + ", " + "Short: "
+					+ new DecimalFormat("#.00").format(difference);
+			
+			throw new OverdrawnAccountException(error);
+		}
+		
+		
+		Transaction trans = new Transaction(tDate, "Withdrawal", amount);
 
-Transaction trans = new Transaction(tDate, "Withdrawal", amount);
+		_transactions.add(trans);
 
-_transactions.add(trans);
+		_transactions.get(0).setBalance(-amount);
+		
 
-_transactions.get(0).setBalance(-amount);
+	}
 
-}
-/**
- * records the transaction as a deposit
- * @param tDate the date as a calendar date
- * @param amount the deposit amount
- */
-public void makeDeposit(Calendar tDate, double amount)
+	/**
+	 * records the transaction as a deposit
+	 * 
+	 * @param tDate
+	 *            the date as a calendar date
+	 * @param amount
+	 *            the deposit amount
+	 */
+	public void makeDeposit(Calendar tDate, double amount)
 
-{
+	{
 
-Transaction trans = new Transaction(tDate, "Deposit", amount);
+		Transaction trans = new Transaction(tDate, "Deposit", amount);
 
-_transactions.add(trans);
+		_transactions.add(trans);
 
-_transactions.get(0).setBalance(amount);
+		_transactions.get(0).setBalance(amount);
 
-}
-/**
- * adds transaction to list of transactions
- * @param trans transactions
- * @param type the account type
- * @param amount the amount
- */
-public void addTransaction(Transaction trans, String type, double amount)
+	}
 
-{
+	/**
+	 * adds transaction to list of transactions
+	 * 
+	 * @param trans
+	 *            transactions
+	 * @param type
+	 *            the account type
+	 * @param amount
+	 *            the amount
+	 */
+	public void addTransaction(Transaction trans, String type, double amount)
 
-_transactions.add(trans);
+	{
 
-_transactions.get(0).setAccountType(type);
+		_transactions.add(trans);
 
-_transactions.get(0).setBalance(amount);
+		_transactions.get(0).setAccountType(type);
 
-}
-/**
- *  gets the transaction
- * @return retruns the information of the transaction
- */
-public String getTransactions()
+		_transactions.get(0).setBalance(amount);
 
-{
+	}
 
-String allTransactions = "";
+	/**
+	 * gets the transaction
+	 * 
+	 * @return retruns the information of the transaction
+	 */
+	public String getTransactions()
 
-SimpleDateFormat dob = new SimpleDateFormat("MM-dd-yyyy");
+	{
 
-for(int i = 1; i < _transactions.size(); i++)
+		String allTransactions = "";
 
-{
+		SimpleDateFormat dob = new SimpleDateFormat("MM-dd-yyyy");
 
-allTransactions += 
+		for (int i = 1; i < _transactions.size(); i++)
 
-dob.format(_transactions.get(i).getDate().getTime()) + " "
+		{
 
- + _transactions.get(i).getType() + " " 
+			allTransactions +=
 
- + new 
+			dob.format(_transactions.get(i).getDate().getTime()) + " "
 
-DecimalFormat("#.00").format(_transactions.get(i).getAmount()) + "\n";
+			+ _transactions.get(i).getType() + " "
 
-}
+			+ new
 
-return allTransactions;
+			DecimalFormat("#.00").format(_transactions.get(i).getAmount())
+					+ "\n";
 
-}
-/**
- *  Gets the owner of the account
- * @return the owner of the account
- */
-public Person getOwner()
+		}
 
-{
+		return allTransactions;
 
-return _owner;
+	}
 
-}
-/**
- * gets the account type
- * @return the account type 
- */
-public String getAccountType()
+	/**
+	 * Gets the owner of the account
+	 * 
+	 * @return the owner of the account
+	 */
+	public Person getOwner()
 
-{
+	{
+		return _owner;
+	}
 
-String type = "";
+	/**
+	 * gets the account type
+	 * 
+	 * @return the account type
+	 */
+	public String getAccountType()
 
-type = _transactions.get(0).getAccountType();
+	{
 
-return type;
+		String type = "";
 
-}
-/**
- * gets the balance of the account
- * @return the new balance
- */
-public double getBalance()
+		type = _transactions.get(0).getAccountType();
 
-{
+		return type;
 
-double balance = 0;
+	}
 
-balance = _transactions.get(0).getBalance();
+	/**
+	 * gets the balance of the account
+	 * 
+	 * @return the new balance
+	 */
+	public double getBalance()
 
-return balance;
+	{
 
-}
-/**
- * compares the bank accounts to their current balance.
- * then returns the difference
- */
-public int compareTo(BankAccount aAccount)
+		double balance = 0;
 
-{
+		balance = _transactions.get(0).getBalance();
 
-double myBalance = getBalance();
+		return balance;
 
-double accountBalance = aAccount.getBalance();
+	}
 
-int difference = (int)(myBalance - accountBalance);
+	/**
+	 * compares the bank accounts to their current balance. then returns the
+	 * difference
+	 */
+	public int compareTo(BankAccount aAccount)
 
-if(difference == 0)
+	{
 
+		double myBalance = getBalance();
 
-difference = Double.compare(getBalance(), aAccount.getBalance());
+		double accountBalance = aAccount.getBalance();
 
-return difference;
+		int difference = (int) (myBalance - accountBalance);
 
-}
-/**
- * _owner as a person with a first name, last name, birth date
- * initializes the array List as transaction
- */
-private Person _owner;
+		if (difference == 0)
 
-private ArrayList<Transaction> _transactions;
+			difference = Double.compare(getBalance(), aAccount.getBalance());
+
+		return difference;
+
+	}
+
+	/**
+	 * _owner as a person with a first name, last name, birth date initializes
+	 * the array List as transaction
+	 */
+	private Person _owner;
+
+	private ArrayList<Transaction> _transactions;
 
 }

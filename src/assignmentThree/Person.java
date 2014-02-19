@@ -64,6 +64,12 @@ public class Person
 	{
 		return _birthDate;
 	}
+	public String getCheck()
+	{
+		SimpleDateFormat dob = new SimpleDateFormat("MM-dd-yyyy");
+		String t = getFirstName() + " " + getLastName() + " " + dob.format(getbirthDate().getTime());
+		return t;
+	}
 
 	/**
 	 * person's first name as a string

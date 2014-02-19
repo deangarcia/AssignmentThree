@@ -26,7 +26,7 @@ public class SavingsAccount extends BankAccount
  *  makes a super withdrawl
  *  saves a date and amount
  */
-	public void makeWithdrawal(Calendar tDate, double amount)
+	public void makeWithdrawal(Calendar tDate, double amount) throws OverdrawnAccountException
 
 	{
 		super.makeWithdrawal(tDate, amount);

@@ -39,9 +39,16 @@ public class Bank implements Displayable
 	 * 
 	 * @param account creates a bankaccount for a person and records their information
 	 */
-	public void addAccount(BankAccount account)
-
+	public void addAccount(BankAccount account) throws DuplicateAccountException
 	{
+		String temp = "Duplicate Account: Owner: " + account.getOwner().getCheck() + ", " + "Type: " + account.getAccountType();
+		for(int i = 1; i < _accounts.size(); i++)
+		{
+			if(account.getOwner().getCheck().equals(_accounts.get(i).getOwner().getCheck()) && account.getAccountType() == _accounts.get(i).getAccountType())
+			{
+				throw new DuplicateAccountException(temp);
+			}
+		}
 		_accounts.add(account);
 	}
 	/**
