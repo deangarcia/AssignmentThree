@@ -56,7 +56,7 @@ public abstract class BankAccount implements Comparable<BankAccount>
 	{
 		String error = "Overdrawn Account: ";
 		SimpleDateFormat dob = new SimpleDateFormat("MM-dd-yyyy");
-		if(_transactions.get(0).getBalance() > amount) 
+		if(_transactions.get(0).getBalance() < amount) 
 		{
 			double difference = _transactions.get(0).getBalance() - amount;
 			error += getOwner().getFirstName() + " " + getOwner().getLastName() + " " + 
@@ -68,13 +68,11 @@ public abstract class BankAccount implements Comparable<BankAccount>
 			throw new OverdrawnAccountException(error);
 		}
 		
-		
 		Transaction trans = new Transaction(tDate, "Withdrawal", amount);
 
 		_transactions.add(trans);
 
 		_transactions.get(0).setBalance(-amount);
-		
 
 	}
 
