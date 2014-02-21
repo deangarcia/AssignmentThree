@@ -3,7 +3,6 @@
 * @author Dean Garcia 3996
 * @author Michael Valenzuela 5522
 **/
-package cecs277;
 import java.util.Calendar;
 
 public class CheckingAccount extends BankAccount 
