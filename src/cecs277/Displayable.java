@@ -3,7 +3,7 @@
 * @author Dean Garcia 3996
 * @author Michael Valenzuela 5522
 **/
-package cecs277;
+
 /**
  * This is the interface to display the information and sort
  */
