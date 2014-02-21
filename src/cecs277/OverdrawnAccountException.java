@@ -1,4 +1,3 @@
-package cecs277;
 
 public class OverdrawnAccountException extends Exception
 {
