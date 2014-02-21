@@ -1,5 +1,3 @@
-package cecs277;
-
 public class DuplicateAccountException extends Exception
 {
 	public DuplicateAccountException(String exc)
