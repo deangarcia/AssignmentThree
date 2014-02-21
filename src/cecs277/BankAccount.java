@@ -1,5 +1,3 @@
-package cecs277;
-
 /**
  * CECS 277 Spring 2014 Assignment 2
  * @author Dean Garcia 3996
@@ -7,13 +5,9 @@ package cecs277;
  **/
 
 import java.text.DecimalFormat;
-
 import java.text.SimpleDateFormat;
-
 import java.util.ArrayList;
-
 import java.util.Calendar;
-
 import java.lang.Comparable;
 
 /**
@@ -21,7 +15,6 @@ import java.lang.Comparable;
  * and deposit
  */
 public abstract class BankAccount implements Comparable<BankAccount>
-
 {
 	/**
 	 * gets information of person and records transaction date
