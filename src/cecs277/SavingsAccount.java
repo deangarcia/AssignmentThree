@@ -1,4 +1,3 @@
-package cecs277;
 import java.util.Calendar;
 /**
  * Class to create a savings account
